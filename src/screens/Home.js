@@ -27,7 +27,7 @@ const Home = ({ navigation }) => {
             style={tw`p-2 bg-indigo-300 rounded-lg items-center`}
             onPress={() =>
               navigation.navigate('Marcas', {
-                tipo: 'carros',
+                tipo: 'cars',
                 tipoNome: 'Carros',
               })
             }
@@ -39,7 +39,7 @@ const Home = ({ navigation }) => {
             style={tw`p-2 bg-indigo-300 items-center  rounded-lg`}
             onPress={() =>
               navigation.navigate('Marcas', {
-                tipo: 'motos',
+                tipo: 'motorcycles',
                 tipoNome: 'Motos',
               })
             }
@@ -50,7 +50,7 @@ const Home = ({ navigation }) => {
           <BotaoHome
             onPress={() =>
               navigation.navigate('Marcas', {
-                tipo: 'caminhoes',
+                tipo: 'trucks',
                 tipoNome: 'Caminhões',
               })
             }

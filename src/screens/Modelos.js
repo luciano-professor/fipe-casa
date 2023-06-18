@@ -12,7 +12,8 @@ import DadosSelecionados from '../components/DadosSelecionados';
 const Modelos = ({ route }) => {
   const { marca, tipo } = route.params;
 
-  const { data } = useSWR(`/${tipo}/marcas/${marca}/modelos`);
+  const { data } = useSWR(`/${tipo}/brands/${marca}/models`);
+  // cars/brands/3/models
 
   // if (!isLoading) {
   //   console.log(modelos);
@@ -22,8 +23,10 @@ const Modelos = ({ route }) => {
 
   // useEffect(() => {
   //   async function lerModelos() {
-  //     const resposta = await axios.get(`/${tipo}/marcas/${marca}/modelos`);
-  //     setModelos(resposta.data.modelos);
+  //     const resposta = await axios.get(`/${tipo}/brands/${marca}/models`);
+  //     // setModelos(resposta.data.modelos);
+  //     // console.log(`/${tipo}/brands/${marca}/models`);
+  //     console.log(resposta.data);
   //   }
   //   lerModelos();
   // }, []);
@@ -35,9 +38,9 @@ const Modelos = ({ route }) => {
       <DadosSelecionados />
 
       <FlatList
-        data={data?.modelos}
+        data={data}
         renderItem={({ item }) => <ModeloItem modelo={item} />}
-        keyExtractor={(item) => item.codigo}
+        keyExtractor={(item) => item.code}
         ListEmptyComponent={
           <ActivityIndicator
             size={24}

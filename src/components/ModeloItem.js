@@ -13,13 +13,13 @@ const ModeloItem = ({ modelo }) => {
     <BotaoItem
       onPress={() =>
         navigation.navigate('Anos', {
-          modelo: modelo.codigo,
-          modeloNome: modelo.nome,
+          modelo: modelo.code,
+          modeloNome: modelo.name,
           ...params,
         })
       }
     >
-      <Text style={tw`text-indigo-200 text-xl`}>{modelo.nome}</Text>
+      <Text style={tw`text-indigo-200 text-xl`}>{modelo.name}</Text>
     </BotaoItem>
   );
 };

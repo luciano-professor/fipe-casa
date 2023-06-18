@@ -13,9 +13,9 @@ import DadosSelecionados from '../components/DadosSelecionados';
 const Marcas = ({ route }) => {
   // const [marcas, setMarcas] = useState([]);
 
-  const { tipo, tipoNome } = route.params;
+  const { tipo } = route.params;
 
-  const { data } = useSWR(`/${tipo}/marcas`);
+  const { data } = useSWR(`/${tipo}/brands`);
 
   // useEffect(() => {
   //   async function lerMarcas() {
@@ -47,7 +47,7 @@ const Marcas = ({ route }) => {
       <FlatList
         data={data}
         renderItem={({ item }) => <MarcaItem marca={item} />}
-        keyExtractor={(item) => item.codigo}
+        keyExtractor={(item) => item.code}
         ListEmptyComponent={
           <ActivityIndicator
             size={24}

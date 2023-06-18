@@ -12,7 +12,8 @@ import DadosSelecionados from '../components/DadosSelecionados';
 const Anos = ({ route }) => {
   const { tipo, marca, modelo } = route.params;
 
-  const { data } = useSWR(`/${tipo}/marcas/${marca}/modelos/${modelo}/anos`);
+  const { data } = useSWR(`/${tipo}/brands/${marca}/models/${modelo}/years`);
+  // const { data } = useSWR(`/${tipo}/brands/${marca}/models`);
 
   // const [anos, setAnos] = useState([]);
 
@@ -41,7 +42,7 @@ const Anos = ({ route }) => {
       <FlatList
         data={data}
         renderItem={({ item }) => <AnoItem ano={item} />}
-        keyExtractor={(item) => item.codigo}
+        keyExtractor={(item) => item.code}
         ListEmptyComponent={
           <ActivityIndicator
             size={24}

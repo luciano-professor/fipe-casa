@@ -6,7 +6,7 @@ import axios from 'axios';
 import { SWRConfig } from 'swr';
 
 //URL Base da API
-axios.defaults.baseURL = 'https://parallelum.com.br/fipe/api/v1';
+axios.defaults.baseURL = 'https://parallelum.com.br/fipe/api/v2';
 // https://deividfortuna.github.io/fipe/
 //http://deividfortuna.github.io/fipe/v2/
 
