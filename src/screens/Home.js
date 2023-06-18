@@ -25,20 +25,35 @@ const Home = ({ navigation }) => {
         <View style={tw`flex-row w-full justify-around`}>
           <TouchableOpacity
             style={tw`p-2 bg-indigo-300 rounded-lg items-center`}
-            onPress={() => navigation.navigate('Marcas', { tipo: 'carros' })}
+            onPress={() =>
+              navigation.navigate('Marcas', {
+                tipo: 'carros',
+                tipoNome: 'Carros',
+              })
+            }
           >
             <FontAwesome5 name="car" size={24} />
             <Text style={tw`text-xl font-bold`}>Carros</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={tw`p-2 bg-indigo-300 items-center  rounded-lg`}
-            onPress={() => navigation.navigate('Marcas', { tipo: 'motos' })}
+            onPress={() =>
+              navigation.navigate('Marcas', {
+                tipo: 'motos',
+                tipoNome: 'Motos',
+              })
+            }
           >
             <FontAwesome5 name="motorcycle" size={24} />
             <Text style={tw`text-xl font-bold`}>Motos</Text>
           </TouchableOpacity>
           <BotaoHome
-            onPress={() => navigation.navigate('Marcas', { tipo: 'caminhoes' })}
+            onPress={() =>
+              navigation.navigate('Marcas', {
+                tipo: 'caminhoes',
+                tipoNome: 'Caminhões',
+              })
+            }
           >
             <FontAwesome5 name="truck" size={24} />
             <Text style={tw`text-xl font-bold`}>Caminhões</Text>

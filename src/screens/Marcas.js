@@ -4,34 +4,50 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Alert } from 'react-native';
 import tw from 'twrnc';
+import useSWR from 'swr';
 
 import MarcaItem from '../components/MarcaItem';
 import TituloPagina from '../components/TituloPagina';
+import DadosSelecionados from '../components/DadosSelecionados';
 
 const Marcas = ({ route }) => {
-  const [marcas, setMarcas] = useState([]);
+  // const [marcas, setMarcas] = useState([]);
 
-  const { tipo } = route.params;
+  const { tipo, tipoNome } = route.params;
 
-  useEffect(() => {
-    async function lerMarcas() {
-      const resposta = await axios.get(`/${tipo}/marcas`);
-      setMarcas(resposta.data);
-    }
-    lerMarcas();
-  }, [tipo]);
+  const { data } = useSWR(`/${tipo}/marcas`);
+
+  // useEffect(() => {
+  //   async function lerMarcas() {
+  //     const resposta = await axios.get(`/${tipo}/marcas`);
+  //     setMarcas(resposta.data);
+  //   }
+  //   lerMarcas();
+  // }, [tipo]);
 
   return (
     <SafeAreaView style={tw`flex-1`}>
       <TituloPagina>Marcas</TituloPagina>
 
-      <FlatList
+      <DadosSelecionados />
+
+      {/* <FlatList
         data={marcas}
         renderItem={({ item }) => <MarcaItem marca={item} />}
         keyExtractor={(item) => item.codigo}
-        // ItemSeparatorComponent={() => (
-        //   <View style={tw`h-[1px] mx-2 bg-indigo-900`} />
-        // )}
+        ListEmptyComponent={
+          <ActivityIndicator
+            size={24}
+            color={tw`text-indigo-100`.color}
+            style={tw`mt-2`}
+          />
+        }
+      /> */}
+
+      <FlatList
+        data={data}
+        renderItem={({ item }) => <MarcaItem marca={item} />}
+        keyExtractor={(item) => item.codigo}
         ListEmptyComponent={
           <ActivityIndicator
             size={24}

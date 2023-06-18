@@ -1,31 +1,41 @@
-import { Text, FlatList, ActivityIndicator } from 'react-native';
+import { Text, FlatList, ActivityIndicator, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import axios from 'axios';
 import tw from 'twrnc';
+import useSWR from 'swr';
 
 import TituloPagina from '../components/TituloPagina';
 import ModeloItem from '../components/ModeloItem';
+import DadosSelecionados from '../components/DadosSelecionados';
 
 const Modelos = ({ route }) => {
   const { marca, tipo } = route.params;
 
-  const [modelos, setModelos] = useState([]);
+  const { data } = useSWR(`/${tipo}/marcas/${marca}/modelos`);
 
-  useEffect(() => {
-    async function lerModelos() {
-      const resposta = await axios.get(`/${tipo}/marcas/${marca}/modelos`);
-      setModelos(resposta.data.modelos);
-    }
-    lerModelos();
-  }, []);
+  // if (!isLoading) {
+  //   console.log(modelos);
+  // }
+
+  // const [modelos, setModelos] = useState([]);
+
+  // useEffect(() => {
+  //   async function lerModelos() {
+  //     const resposta = await axios.get(`/${tipo}/marcas/${marca}/modelos`);
+  //     setModelos(resposta.data.modelos);
+  //   }
+  //   lerModelos();
+  // }, []);
 
   return (
     <SafeAreaView>
       <TituloPagina>Modelos</TituloPagina>
 
+      <DadosSelecionados />
+
       <FlatList
-        data={modelos}
+        data={data?.modelos}
         renderItem={({ item }) => <ModeloItem modelo={item} />}
         keyExtractor={(item) => item.codigo}
         ListEmptyComponent={
@@ -36,6 +46,19 @@ const Modelos = ({ route }) => {
           />
         }
       />
+
+      {/* <FlatList
+        data={modelos}
+        renderItem={({ item }) => <ModeloItem modelo={item} />}
+        keyExtractor={(item) => item.codigo}
+        ListEmptyComponent={
+          <ActivityIndicator
+            size={24}
+            color={tw`text-indigo-100`.color}
+            style={tw`mt-2`}
+          />
+        }
+      /> */}
     </SafeAreaView>
   );
 };

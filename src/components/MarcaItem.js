@@ -7,15 +7,16 @@ import BotaoItem from './BotaoItem';
 
 const MarcaItem = ({ marca }) => {
   const navigation = useNavigation();
-  const { tipo } = useRoute().params;
-  // const {tipo }
-
-  // console.log(route.params);
+  const { ...params } = useRoute().params;
 
   return (
     <BotaoItem
       onPress={() =>
-        navigation.navigate('Modelos', { marca: marca.codigo, tipo })
+        navigation.navigate('Modelos', {
+          marca: marca.codigo,
+          marcaNome: marca.nome,
+          ...params,
+        })
       }
     >
       <Text style={tw`text-indigo-200 text-xl`}>{marca.nome}</Text>

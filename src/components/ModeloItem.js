@@ -7,12 +7,16 @@ import BotaoItem from './BotaoItem';
 
 const ModeloItem = ({ modelo }) => {
   const navigation = useNavigation();
-  const { tipo, marca } = useRoute().params;
+  const { ...params } = useRoute().params;
 
   return (
     <BotaoItem
       onPress={() =>
-        navigation.navigate('Anos', { modelo: modelo.codigo, marca, tipo })
+        navigation.navigate('Anos', {
+          modelo: modelo.codigo,
+          modeloNome: modelo.nome,
+          ...params,
+        })
       }
     >
       <Text style={tw`text-indigo-200 text-xl`}>{modelo.nome}</Text>
