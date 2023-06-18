@@ -16,11 +16,9 @@ const Valor = ({ route }) => {
   useEffect(() => {
     async function lerValor() {
       const resposta = await axios.get(
-        `https://parallelum.com.br/fipe/api/v1/${tipo}/marcas/${marca}/modelos/${modelo}/anos/${ano}`,
+        `/${tipo}/marcas/${marca}/modelos/${modelo}/anos/${ano}`,
       );
-      console.log(
-        `https://parallelum.com.br/fipe/api/v1/${tipo}/marcas/${marca}/modelos/${modelo}/anos/${ano}`,
-      );
+
       setValor(resposta.data);
     }
     lerValor();

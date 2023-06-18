@@ -14,14 +14,7 @@ const Modelos = ({ route }) => {
 
   useEffect(() => {
     async function lerModelos() {
-      const resposta = await axios.get(
-        `https://parallelum.com.br/fipe/api/v1/${tipo}/marcas/${marca}/modelos`,
-      );
-      // console.log(
-      //   `https://parallelum.com.br/fipe/api/v1/${tipo}/marcas/${marca}/modelos`,
-      // );
-      // console.log(route.params);
-      // console.log(resposta.data);
+      const resposta = await axios.get(`/${tipo}/marcas/${marca}/modelos`);
       setModelos(resposta.data.modelos);
     }
     lerModelos();

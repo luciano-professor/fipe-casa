@@ -2,6 +2,10 @@ import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import tw from 'twrnc';
+import axios from 'axios';
+
+//URL Base da API
+axios.defaults.baseURL = 'https://parallelum.com.br/fipe/api/v1';
 
 import StackNavigator from './src/StackNavigator';
 

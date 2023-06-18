@@ -13,14 +13,9 @@ const Marcas = ({ route }) => {
 
   const { tipo } = route.params;
 
-  // Alert.alert('', tipo);
-
   useEffect(() => {
     async function lerMarcas() {
-      const resposta = await axios.get(
-        `https://parallelum.com.br/fipe/api/v1/${tipo}/marcas`,
-      );
-      // console.log(resposta.data);
+      const resposta = await axios.get(`/${tipo}/marcas`);
       setMarcas(resposta.data);
     }
     lerMarcas();
